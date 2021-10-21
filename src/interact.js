@@ -165,7 +165,6 @@ export default function Interact() {
                             }} >Say it out loud</button>
                 <button id="say2" className='px-4 rounded-lg w-auto text-lg mt-4 font-semibold border-black' style={{ backgroundColor: '#60A5FA', display: "none" }} onClick={(event) => {
                                 event.preventDefault()
-                                //var msg = new SpeechSynthesisUtterance();
                                 // const voice = window.speechSynthesis.getVoices()[17];
                                     const utterance = new SpeechSynthesisUtterance();
                                     const voice = window.speechSynthesis.getVoices()[17];
