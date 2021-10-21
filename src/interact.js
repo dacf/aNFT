@@ -10,8 +10,6 @@ export default function Interact() {
     const [question, setquestion] = useState('')
     const [action, setaction] = useState('')
     const [BgTalktoMeBtn, setBgTalktoMeBtn] = useState('')
-    const [query, setQuery] = useState('')
-
     // commands for speech to text 
     const commands = [
         {
@@ -34,8 +32,6 @@ export default function Interact() {
     }
 
     async function runAISpeech() {
-        setQuery(`["my name is Charlie.", "I bought 100 ETH yesterday", "I aped into ETH", "total networth is 200 ETH"]`)
-        // console.log("@@@@", query)
         try {
             const response = await fetch("https://api.openai.com/v1/answers", {
                 body: `{"documents": ["My name is Freya.", "I bought 1.005 USDC on october 21", "I bought USDC" ,"I aped into USDC", "traded 1 WBUSD for 1.005 USDC", "1 wrapped BUSD for 1.005 USDC", "wrapped BUSD for USDC", "I will buy wrapped BUSD next", "My creator is Autonomy Network", "Next I will buy wrapped BUSD"],"question": "${transcript}","search_model": "ada","model": "curie","examples_context": "Adeolu is a developer.","examples": [["What is your name?","Freya."], ["What did you buy?", "1.005"], ["When did you buy?","today."], ["What did you ape into?", "USDC."], ["What was your last trade?", "I traded 1 wrapped BUSD for 1.005 USDC"], ["What did you trade?", "wrapped BUSD for USDC"], ["What was traded", "1 wrapped BUSD for 1.005 USDC"], ["What did you last buy?", "USDC"], ["What will you buy next?", "Wrapped BUSD"], ["What is next?", "Buying Wrapped BUSD"]],"max_tokens":15,"stop": ["n", "<|endoftext|>"]}`,
