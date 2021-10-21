@@ -145,11 +145,37 @@ export default function Interact() {
                 <div className='mt-4 font-black'>
                     Your Question: {speech} ?
                 </div>
-                <button className='px-4 rounded-lg w-auto text-lg mt-4 font-semibold border-black' style={{ backgroundColor: '#60A5FA' }} onClick={(event) => {
+                <button id="say" className='px-4 rounded-lg w-auto text-lg mt-4 font-semibold border-black' style={{ backgroundColor: '#60A5FA' }} onClick={(event) => {
                                 event.preventDefault()
-                                var msg = new SpeechSynthesisUtterance();
-                                msg.text = answer;
-                                window.speechSynthesis.speak(msg);
+                                //var msg = new SpeechSynthesisUtterance();
+                                // const voice = window.speechSynthesis.getVoices()[17];
+                                window.speechSynthesis.onvoiceschanged = function() {
+                                    const utterance = new SpeechSynthesisUtterance();
+                                    const voice = window.speechSynthesis.getVoices()[17];
+                                    utterance.text = answer;
+                                    utterance.voice = voice;
+                                    utterance.pitch = 1;
+                                    utterance.rate = 0.9;
+                                    utterance.volume = 1;
+                                    window.speechSynthesis.speak(utterance);    
+                                };
+                                document.getElementById("say").style.display = "none";
+                                document.getElementById("say2").style.display = "";
+                                // utterance.default = true;
+                            }} >Say it out loud</button>
+                <button id="say2" className='px-4 rounded-lg w-auto text-lg mt-4 font-semibold border-black' style={{ backgroundColor: '#60A5FA', display: "none" }} onClick={(event) => {
+                                event.preventDefault()
+                                //var msg = new SpeechSynthesisUtterance();
+                                // const voice = window.speechSynthesis.getVoices()[17];
+                                    const utterance = new SpeechSynthesisUtterance();
+                                    const voice = window.speechSynthesis.getVoices()[17];
+                                    utterance.text = answer;
+                                    utterance.voice = voice;
+                                    utterance.pitch = 1;
+                                    utterance.rate = 0.9;
+                                    utterance.volume = 1;
+                                    window.speechSynthesis.speak(utterance);    
+                                // utterance.default = true;
                             }} >Say it out loud</button>
                 <div className='mt-4 font-black'>
                     Text response: {answer.toString()}
