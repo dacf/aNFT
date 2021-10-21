@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './tailwind.css'
 import logo from './Black-png.png'
-import cryptoPunk from './cryptoPunk.png'
 import freya from './freya.png'
 import Interact from './interact';
 function App() {
@@ -24,7 +23,7 @@ function App() {
     <div className="App bg-gradient-to-b from-blue-500 via-blue-200 to-blue-50 h-full">
       <div className = 'w-full h-12'>
         <div className ='flex flex-row justify-start p-4'>
-          <img src = {logo} className = 'h-14 w-14'/>
+          <img src = {logo} alt="freya" className = 'h-14 w-14'/>
           <p className = 'mt-4 font-bold text-2xl'>Autonomy Network</p>
         </div>
       </div>
