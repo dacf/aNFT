@@ -26,17 +26,48 @@ export default function Interact() {
         }
     ]
 
-    const { transcript, browserSupportsSpeechRecognition} = useSpeechRecognition({ commands })  //define transcript used in specch to text 
-    if (!browserSupportsSpeechRecognition) {
+    const { transcript, resetTranscript} = useSpeechRecognition({ commands })  //define transcript used in specch to text 
+    if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
         return null
     }
 
     async function runAISpeech() {
         try {
             const response = await fetch("https://api.openai.com/v1/answers", {
-                body: `{"documents": ["My name is Freya.", "I bought 1.005 USDC on october 21", "I bought USDC" ,"I aped into USDC", "traded 1 WBUSD for 1.005 USDC", "1 wrapped BUSD for 1.005 USDC", "wrapped BUSD for USDC", "I will buy wrapped BUSD next", "My creator is Autonomy Network", "Next I will buy wrapped BUSD"],"question": "${transcript}","search_model": "ada","model": "curie","examples_context": "Adeolu is a developer.","examples": [["What is your name?","Freya."], ["What did you buy?", "1.005"], ["When did you buy?","today."], ["What did you ape into?", "USDC."], ["What was your last trade?", "I traded 1 wrapped BUSD for 1.005 USDC"], ["What did you trade?", "wrapped BUSD for USDC"], ["What was traded", "1 wrapped BUSD for 1.005 USDC"], ["What did you last buy?", "USDC"], ["What will you buy next?", "Wrapped BUSD"], ["What is next?", "Buying Wrapped BUSD"]],"max_tokens":15,"stop": ["n", "<|endoftext|>"]}`,
+                body: `{"documents": ["My name is Leto.", 
+                "I am Leto", 
+                "I ate 1 sheep on october 24", 
+                "I have 1 child", 
+                "I ate 1 sheep", 
+                "My kid is 0x4B6EC90E7cb95AaE16B6487Ea339a397897fd151", 
+                "I am the genesis wolf", 
+                "I want to eat sheep", 
+                "I am hungry", 
+                "I eat sheep",
+                "Yes I am hungry",
+                "I have one child",
+                "My child is 0x4B6EC90E7cb95AaE16B6487Ea339a397897fd151",
+                "I am worth 3 ETH",
+                "I cost 3 ETH",
+                "3 ETH is my value",
+                "I am valued at 3 ETH"],
+                "question": "${transcript}","search_model": "ada","model": "curie","examples_context": "Leto is a wolf.",
+                "examples": [["What is your name?","Leto."], 
+                ["What did you eat?", "1 sheep"], 
+                ["Are you hungry?","Yes I am hungry."], 
+                ["Who is your kid?", "My kid is 0x4B6EC90E7cb95AaE16B6487Ea339a397897fd151"], 
+                ["How many kids?", "1 kid"], 
+                ["Who is your child?", "0x4B6EC90E7cb95AaE16B6487Ea339a397897fd151"], 
+                ["What do you eat?", "I eat sheep"], 
+                ["How many children do you have?", "I have one child"], 
+                ["What will you do next?", "Eat more sheep"], 
+                ["What is next?", "Eat sheep"],
+                ["How much are your worth?", "3 Eth"],
+                ["How much do you cost?", "My value is 3 ETH"],
+                ["Who are you?", "I am Leto"]],
+                "max_tokens":15,"stop": ["n", "<|endoftext|>"]}`,
                 headers: {
-                    Authorization: "Bearer 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",
+                    Authorization: "Bearer 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",
                     "Content-Type": "application/json"
                 },
                 method: "POST"
@@ -88,7 +119,39 @@ export default function Interact() {
                     console.log(question)
                     try {
                         const response = await fetch("https://api.openai.com/v1/answers", {
-                            body: `{"documents": ["My name is Freya.", "I bought 1.005 USDC on october 21", "I bought USDC" ,"I aped into USDC", "traded 1 WBUSD for 1.005 USDC", "1 wrapped BUSD for 1.005 USDC", "wrapped BUSD for USDC", "I will buy wrapped BUSD next", "My creator is Autonomy Network", "Next I will buy wrapped BUSD", "Name is Freya", "Freya is my name"],"question": "${question}","search_model": "ada","model": "curie","examples_context": "Adeolu is a developer.","examples": [["What is your name?","Freya."], ["What did you buy?", "1.005"], ["When did you buy?","today."], ["What did you ape into?", "USDC."], ["What was your last trade?", "I traded 1 wrapped BUSD for 1.005 USDC"], ["What did you trade?", "wrapped BUSD for USDC"], ["What was traded", "1 wrapped BUSD for 1.005 USDC"], ["What did you last buy?", "USDC"], ["What will you buy next?", "Wrapped BUSD"], ["What is next?", "Buying Wrapped BUSD"]],"max_tokens":15,"stop": ["n", "<|endoftext|>"]}`,
+                            body: `{"documents": ["My name is Leto",
+                            "I am Leto", 
+                            "I ate 1 sheep on october 24", 
+                            "I have 1 child", 
+                            "I ate 1 sheep", 
+                            "My kid is 0x4B6EC90E7cb95AaE16B6487Ea339a397897fd151", 
+                            "I am the genesis wolf", 
+                            "I want to eat sheep", 
+                            "I am hungry", 
+                            "I eat sheep",
+                            "Yes I am hungry",
+                            "I have one child",
+                            "My child is 0x4B6EC90E7cb95AaE16B6487Ea339a397897fd151",
+                            "I am worth 3 ETH",
+                            "I cost 3 ETH",
+                            "3 ETH is my value",
+                            "I am valued at 3 ETH"],
+                            "question": "${question}","search_model": "ada","model": "curie","examples_context": "Leto is a wolf.",
+                            "examples": [["What is your name?","Leto."], 
+                            ["What did you eat?", "1 sheep"], 
+                            ["Are you hungry?","Yes I am hungry."], 
+                            ["Who is your kid?", "My kid is 0x4B6EC90E7cb95AaE16B6487Ea339a397897fd151"], 
+                            ["How many kids?", "1 kid"], 
+                            ["Who is your child?", "0x4B6EC90E7cb95AaE16B6487Ea339a397897fd151"], 
+                            ["What do you eat?", "I eat sheep"], 
+                            ["How many children do you have?", "I have one child"], 
+                            ["What will you do next?", "Eat more sheep"], 
+                            ["What is next?", "Eat sheep"],
+                            ["How much are your worth?", "3 Eth"],
+                            ["How much do you cost?", "My value is 3 ETH"],
+                            ["Who are you?","I am Leto"]],
+                            "max_tokens":15,
+                            "stop": ["n", "<|endoftext|>"]}`,
                             headers: {
                                 Authorization: "Bearer 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",
                                 "Content-Type": "application/json"
@@ -149,21 +212,21 @@ export default function Interact() {
                                 event.preventDefault()
                                 //var msg = new SpeechSynthesisUtterance();
                                 // const voice = window.speechSynthesis.getVoices()[17];
-                                window.speechSynthesis.onvoiceschanged = function() {
+                                // window.speechSynthesis.onvoiceschanged = function() {
                                     const utterance = new SpeechSynthesisUtterance();
-                                    const voice = window.speechSynthesis.getVoices()[17];
+                                    // const voice = window.speechSynthesis.getVoices()[0];
                                     utterance.text = answer;
-                                    utterance.voice = voice;
+                                    // utterance.voice = voice;
                                     utterance.pitch = 1;
                                     utterance.rate = 0.9;
                                     utterance.volume = 1;
                                     window.speechSynthesis.speak(utterance);    
-                                };
-                                document.getElementById("say").style.display = "none";
-                                document.getElementById("say2").style.display = "";
+                               //  };
+                                //document.getElementById("say").style.display = "none";
+                                // document.getElementById("say2").style.display = "";
                                 // utterance.default = true;
                             }} >Say it out loud</button>
-                <button id="say2" className='px-4 rounded-lg w-auto text-lg mt-4 font-semibold border-black' style={{ backgroundColor: '#60A5FA', display: "none" }} onClick={(event) => {
+{/*                 <button id="say2" className='px-4 rounded-lg w-auto text-lg mt-4 font-semibold border-black' style={{ backgroundColor: '#60A5FA', display: "none" }} onClick={(event) => {
                                 event.preventDefault()
                                 // const voice = window.speechSynthesis.getVoices()[17];
                                     const utterance = new SpeechSynthesisUtterance();
@@ -175,10 +238,11 @@ export default function Interact() {
                                     utterance.volume = 1;
                                     window.speechSynthesis.speak(utterance);    
                                 // utterance.default = true;
-                            }} >Say it out loud</button>
+                            }} >Say it out loud</button> */}
                 <div className='mt-4 font-black'>
                     Text response: {answer.toString()}
                 </div>
+                <button className='px-4 rounded-lg w-auto text-lg mt-4 font-semibold border-black' style={{ backgroundColor: '#60A5FA'}}  onClick={resetTranscript}>Reset</button>
             </div>
         </div>
     )

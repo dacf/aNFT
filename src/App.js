@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './tailwind.css'
 import logo from './Black-png.png'
-import freya from './freya.png'
+import wolf from './WOLF2.png'
 import Interact from './interact';
 function App() {
   const [mode, setmode] = useState('home')
@@ -20,7 +20,7 @@ function App() {
   }
 
   return (
-    <div className="App bg-gradient-to-b from-blue-500 via-blue-200 to-blue-50 h-full">
+    <div className="">
       <div className = 'w-full h-12'>
         <div className ='flex flex-row justify-start p-4'>
           <img src = {logo} alt="freya" className = 'h-14 w-14'/>
@@ -28,18 +28,18 @@ function App() {
         </div>
       </div>
       <div className='text-center font-bold text-4xl text-black mt-10'>
-        FREYA
+        Odin
       </div>
       <div className='text-center font-bold text-2xl text-black mt-2'>
-        The first aNFT
+        Autonomous NPC
       </div>
       <div className='flex justify-center w-auto h-72'>
-        <img src={freya} alt='freya' className='mt-10' />
+        <img src={wolf} alt='freya' className='mt-10' />
       </div>
       <div className='flex justify-center'>
         {content}
       </div>
-      <div className = 'h-36'>
+      <div className = 'max-h-screen'>
 
 </div>
     </div>
