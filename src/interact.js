@@ -34,8 +34,8 @@ export default function Interact() {
     async function runAISpeech() {
         try {
             const response = await fetch("https://api.openai.com/v1/answers", {
-                body: `{"documents": ["My name is Leto.", 
-                "I am Leto", 
+                body: `{"documents": ["My name is Odin.", 
+                "I am Odin", 
                 "I ate 1 sheep on october 24", 
                 "I have 1 child", 
                 "I ate 1 sheep", 
@@ -51,8 +51,8 @@ export default function Interact() {
                 "I cost 3 ETH",
                 "3 ETH is my value",
                 "I am valued at 3 ETH"],
-                "question": "${transcript}","search_model": "ada","model": "curie","examples_context": "Leto is a wolf.",
-                "examples": [["What is your name?","Leto."], 
+                "question": "${transcript}","search_model": "ada","model": "curie","examples_context": "Odin is a wolf.",
+                "examples": [["What is your name?","Odin."], 
                 ["What did you eat?", "1 sheep"], 
                 ["Are you hungry?","Yes I am hungry."], 
                 ["Who is your kid?", "My kid is 0x4B6EC90E7cb95AaE16B6487Ea339a397897fd151"], 
@@ -64,10 +64,10 @@ export default function Interact() {
                 ["What is next?", "Eat sheep"],
                 ["How much are your worth?", "3 Eth"],
                 ["How much do you cost?", "My value is 3 ETH"],
-                ["Who are you?", "I am Leto"]],
+                ["Who are you?", "I am Odin"]],
                 "max_tokens":15,"stop": ["n", "<|endoftext|>"]}`,
                 headers: {
-                    Authorization: "Bearer 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",
+                    Authorization: "Bearer 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",
                     "Content-Type": "application/json"
                 },
                 method: "POST"
